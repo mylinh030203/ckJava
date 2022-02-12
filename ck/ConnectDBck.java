@@ -13,7 +13,7 @@ public class ConnectDBck {
 	public Connection connect(){
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").getConstructor().newInstance();
-			String connectionUrl = "jdbc:sqlserver://DESKTOP-TM4S549\\SQLEXPRESS:1433;databaseName=Rental_Management;user=sa;password=123456789";
+			String connectionUrl = "jdbc:sqlserver://PHANMYLINH\\SQLEXPRESS:1433;databaseName=Rental_Management;user=sa;password=123456789";
 			conn = DriverManager.getConnection(connectionUrl);
 			System.out.println("Connected...");
 		} catch (Exception e) {
@@ -22,8 +22,19 @@ public class ConnectDBck {
 		}
 		return conn;
 	}
-	
-	
+/*	public int addNew(String sql) {
+		int record=0;
+		try {
+			connect();
+			stmt = conn.createStatement();
+			record = stmt.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return record;
+	}*/
 	public int executeDB(String sql) { //insert, update, delete
 		int record=0;
 		try {
@@ -46,7 +57,6 @@ public class ConnectDBck {
 		}
 		return record;
 	}
-	
 	public ResultSet listAll(String sql) {
 		try {
 			connect();
@@ -68,6 +78,13 @@ public class ConnectDBck {
 		return rs;
 	
 	}
-
+	
+	
+	public static void main(String [] agrs) {
+		ConnectDBck cn = new ConnectDBck();
+		
+		
+	}
+	
 
 }
